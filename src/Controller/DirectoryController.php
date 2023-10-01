@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DirectoryController extends AbstractController
 {
-    #[Route('/directory', name: 'app_directory')]
+    #[Route('/profile/directory', name: 'app_directory')]
     public function index(UserRepository $userRepository): Response
     {
         $users = $userRepository->findAll();
