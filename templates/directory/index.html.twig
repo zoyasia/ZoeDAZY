@@ -13,7 +13,7 @@
 				<div class="card-body">
 					<h5 class="card-title">{{ user.firstname }} {{ user.lastname | upper }}</h5>
 					<h6 class="card-subtitle mb-2 text-body-secondary"> {{ user.email }}</h6>
-                    <a href="" class="card-link">Voir les informations</a>
+                    <a href="{{ path('app_user', { 'id': user.id } ) }}" class="card-link">Voir les informations</a>
 				</div>
 			</div>
 		{% else %}
