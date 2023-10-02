@@ -5,6 +5,7 @@
 {% block body %}
 <h1>{{ user.firstname }} {{ user.lastname | upper }} </h1>
 </br>
+<img src="{{ user.picture }}" alt="portrait de l'employé">
 <h2>Service : {{ user.department.name }}</h2>
 <h5>Email: {{ user.email }}</h5>
 <p>Type de contrat : {{ user.contractType.name }}</p>
