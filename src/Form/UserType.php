@@ -40,6 +40,7 @@ class UserType extends AbstractType
             ->add('contractType', EntityType::class, [
                 'class' => ContractType::class,
                 'choice_label' => 'name'])
+            ->add('terminationDate')
         ;
     }
 
