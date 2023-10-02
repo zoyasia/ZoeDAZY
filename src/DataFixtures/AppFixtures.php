@@ -43,25 +43,26 @@ class AppFixtures extends Fixture
             $departments[] = $department;
         }
 
-
+        for ($i = 0; $i < self::NB_EMPLOYEES; $i++) {
         $regularUser = new User();
         $regularUser
-        ->setEmail('bobby@bob.com')
+        ->setEmail($faker->email())
         ->setPassword($this->hasher->hashPassword($regularUser, 'test'))
-        ->setFirstname('Bobby')
-        ->setLastname('Brown')
-        ->setPicture('https://via.placeholder.com/640x480.png/00ee33?text=rerum')
+        ->setFirstname($faker->firstName())
+        ->setLastname($faker->lastName())
+        ->setPicture($faker->imageUrl())
         ->setRoles(['ROLE_USER'])
         ->setContractType($faker->randomElement($contractTypes))
         ->setDepartment($faker->randomElement($departments));
         
         $manager->persist($regularUser);
+        }
 
         $adminUser = new User();
         $adminUser
-        ->setEmail('admin@mycorp.com')
+        ->setEmail('rh@hb.com')
         ->setRoles(['ROLE_ADMIN'])
-        ->setPassword($this->hasher->hashPassword($adminUser, 'test'))
+        ->setPassword($this->hasher->hashPassword($adminUser, 'azerty123'))
         ->setFirstname('Marie')
         ->setLastname('Curie')
         ->setPicture('https://via.placeholder.com/640x480.png/00ee33?text=rerum')
