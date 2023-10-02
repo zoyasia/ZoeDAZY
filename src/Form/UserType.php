@@ -2,8 +2,12 @@
 
 namespace App\Form;
 
+use App\Entity\ContractType;
+use App\Entity\Department;
 use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,11 +17,24 @@ class UserType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('roles')
+            ->add('roles', ChoiceType::class, [
+                'choices' => [
+                    'ROLE_USER' => 'ROLE_USER',
+                    'ROLE_ADMIN' => 'ROLE_ADMIN',
+                ],
+                'multiple' => true, // Allow selecting multiple roles if necessary
+                'expanded' => true, // Render the roles as checkboxes or radio buttons
+            ])
             ->add('password')
             ->add('firstname')
             ->add('lastname')
             ->add('picture')
+            ->add('department', EntityType::class, [
+                'class' => Department::class,
+                'choice_label' => 'name'])
+            ->add('contractType', EntityType::class, [
+                'class' => ContractType::class,
+                'choice_label' => 'name'])
         ;
     }
 
