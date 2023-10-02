@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit User{% endblock %}
+{% block title %}Modification{% endblock %}
 
 {% block body %}
-    <h1>Edit User</h1>
+    <h1>Modifier un utilisateur</h1>
 
     {{ include('crud/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_crud_index') }}">back to list</a>
+    <a href="{{ path('app_crud_index') }}">Retour à la liste</a>
 
     {{ include('crud/_delete_form.html.twig') }}
 {% endblock %}
