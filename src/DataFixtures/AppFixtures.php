@@ -52,6 +52,7 @@ class AppFixtures extends Fixture
         ->setLastname($faker->lastName())
         ->setPicture($faker->imageUrl())
         ->setRoles(['ROLE_USER'])
+        ->setTerminationDate($faker->dateTimeBetween('now', '+2 years'))
         ->setContractType($faker->randomElement($contractTypes))
         ->setDepartment($faker->randomElement($departments));
         
@@ -67,6 +68,7 @@ class AppFixtures extends Fixture
         ->setLastname('Curie')
         ->setPicture('https://via.placeholder.com/640x480.png/00ee33?text=rerum')
         ->setContractType($faker->randomElement($contractTypes))
+        ->setTerminationDate($faker->dateTimeBetween('now', '+2 years'))
         ->setDepartment($faker->randomElement($departments));
 
         $manager->persist($adminUser);
