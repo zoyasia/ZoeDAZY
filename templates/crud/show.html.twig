@@ -1,49 +1,62 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Détail{% endblock %}
+{% block title %}Détail
+{% endblock %}
 
 {% block body %}
-    <h1>Utilisateur</h1>
+	<h1>Utilisateur</h1>
 
 
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ user.id }}</td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td>{{ user.email }}</td>
+			</tr>
+			<tr>
+				<th>Roles</th>
+				<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+			</tr>
+			<tr>
+				<th>Mot de passe</th>
+				<td>{{ user.password }}</td>
+			</tr>
+			<tr>
+				<th>Prénom</th>
+				<td>{{ user.firstname }}</td>
+			</tr>
+			<tr>
+				<th>Nom</th>
+				<td>{{ user.lastname }}</td>
+			</tr>
+			<tr>
+				<th>Image</th>
+				<td>{{ user.picture }}</td>
+			</tr>
+			<tr>
+				<th>Service</th>
+				<td>{{ user.department.name }}</td>
+			</tr>
+			<tr>
+				<th>Contrat</th>
+				<td>{{ user.contractType.name }}</td>
+			</tr>
+			<tr>
+				<th>Fin de contrat</th>
+				<td>{{ user.terminationDate ? user.terminationDate|date('d-m-y') : '' }}</td>
+			</tr>
+		</tbody>
+	</table>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
-            <tr>
-                <th>Firstname</th>
-                <td>{{ user.firstname }}</td>
-            </tr>
-            <tr>
-                <th>Lastname</th>
-                <td>{{ user.lastname }}</td>
-            </tr>
-            <tr>
-                <th>Picture</th>
-                <td>{{ user.picture }}</td>
-            </tr>
-        </tbody>
-    </table>
 
+	<a href="{{ path('app_crud_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('app_crud_index') }}">Retour à la liste</a>
+	<a href="{{ path('app_crud_edit', {'id': user.id}) }}">Modifier</a>
 
-    <a href="{{ path('app_crud_edit', {'id': user.id}) }}">Modifier</a>
-
-    {{ include('crud/_delete_form.html.twig') }}
+	{{ include('crud/_delete_form.html.twig') }}
 {% endblock %}
+

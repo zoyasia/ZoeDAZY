@@ -13,11 +13,13 @@
 					<th>Id</th>
 					<th>Email</th>
 					<th>Roles</th>
-					<th>Password</th>
-					<th>Firstname</th>
-					<th>Lastname</th>
-					<th>Picture</th>
-					<th>actions</th>
+					<th>Prénom</th>
+					<th>Nom</th>
+					<th>Image</th>
+					<th>Service</th>
+					<th>Contrat</th>
+					<th>Fin de contrat</th>
+					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -26,13 +28,15 @@
 						<td>{{ user.id }}</td>
 						<td>{{ user.email }}</td>
 						<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-						<td>{{ user.password }}</td>
 						<td>{{ user.firstname }}</td>
 						<td>{{ user.lastname }}</td>
 						<td>{{ user.picture }}</td>
+						<td>{{ user.department.name }}</td>
+						<td>{{ user.contractType.name }}</td>
+						<td>{{ user.terminationDate ? user.terminationDate|date('d-m-y') : '' }}</td>
 						<td>
-							<a href="{{ path('app_crud_show', {'id': user.id}) }}">show</a>
-							<a href="{{ path('app_crud_edit', {'id': user.id}) }}">edit</a>
+							<a href="{{ path('app_crud_show', {'id': user.id}) }}">voir</a>
+							<a href="{{ path('app_crud_edit', {'id': user.id}) }}">modifier</a>
 						</td>
 					</tr>
 				{% else %}
