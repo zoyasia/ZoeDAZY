@@ -3,8 +3,12 @@
 {% block title %}Fiche contact{% endblock %}
 
 {% block body %}
-{{ user.firstname }} {{ user.lastname | upper }}
-<h5>{{ user.email }}</h5>
+<h1>{{ user.firstname }} {{ user.lastname | upper }} </h1>
+</br>
+<h2>Service : {{ user.department.name }}</h2>
+<h5>Email: {{ user.email }}</h5>
+<p>Type de contrat : {{ user.contractType.name }}</p>
+</br>
 <a href="{{ path('app_directory') }}" >Retour à l'annuaire</a>
 
 {% endblock %}
